@@ -1,6 +1,8 @@
 //go:generate stringer -type=Suit,Rank
 package deck
 
+import "fmt"
+
 type Suit uint8
 
 const (
@@ -36,5 +38,9 @@ type Card struct {
 }
 
 func (c Card) String() string {
-	return "Ace of hearts"
+	if c.Suit == Joker {
+		return c.Suit.String()
+	}
+
+	return fmt.Sprintf("%s of %ss", c.Rank, c.Suit)
 }
