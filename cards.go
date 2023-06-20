@@ -1,4 +1,4 @@
-//go:generate stringer -type=Rank,Suit
+//go:generate stringer -type=Suit,Rank
 package deck
 
 type Suit uint8
@@ -33,4 +33,8 @@ const (
 type Card struct {
 	Suit
 	Rank
+}
+
+func (c Card) String() string {
+	return "Ace of hearts"
 }
