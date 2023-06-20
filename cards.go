@@ -10,8 +10,10 @@ const (
 	Diamond
 	Club
 	Heart
-	Joker
+	Joker // This is a special case
 )
+
+var suits = [...]Suit{Spade, Diamond, Club, Heart}
 
 type Rank uint8
 
@@ -32,6 +34,11 @@ const (
 	King
 )
 
+const (
+	minRank = Ace
+	maxRank = King
+)
+
 type Card struct {
 	Suit
 	Rank
@@ -43,4 +50,20 @@ func (c Card) String() string {
 	}
 
 	return fmt.Sprintf("%s of %ss", c.Rank, c.Suit)
+}
+
+func New() []Card {
+	var cards []Card
+
+	// TODO
+	// for each suit
+	for _, suit := range suits {
+		// for each rank
+		for rank := minRank; rank <= maxRank; rank++ {
+			// add card(suit,rank) to cards
+			cards = append(cards, Card{Suit: suit, Rank: rank})
+		}
+	}
+
+	return cards
 }
