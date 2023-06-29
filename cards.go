@@ -128,3 +128,18 @@ func Jokers(n int) func([]Card) []Card {
 		return cards
 	}
 }
+
+// the function inside the parameter will return a true if it will filter a card or false if not
+func Filter(f func(card Card) bool) func([]Card) []Card {
+	return func(cards []Card) []Card {
+		var ret []Card
+		for _, c := range cards {
+			if !f(c) {
+				ret = append(ret, c)
+			}
+		}
+		return ret
+
+	}
+
+}
