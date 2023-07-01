@@ -49,7 +49,7 @@ func TestShuffle(t *testing.T) {
 	// make shuffle rand deterministic
 	// First call to shuffleRand.Perm(52) sshould be
 	//[40, 35 ...]
-	shuffleRand = rand.New(rand.NewSource(0))
+	shuffleRand = rand.New(rand.NewSource(0)) // will establish a seed so that permutation of indexes will always be the same
 
 	origDeck := New()
 	first := origDeck[40]
