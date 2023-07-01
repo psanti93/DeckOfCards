@@ -143,3 +143,14 @@ func Filter(f func(card Card) bool) func([]Card) []Card {
 	}
 
 }
+
+func Deck(n int) func([]Card) []Card {
+	return func(cards []Card) []Card {
+		var ret []Card
+		for i := 0; i < n; i++ {
+			ret = append(ret, cards...)
+			//cards = append(cards, cards...) this doubles each iteration: Ex 3 iterations:  first iteration 2x52 =104, second iteration 104*2=208, third iteration 208*2=416
+		}
+		return ret
+	}
+}
